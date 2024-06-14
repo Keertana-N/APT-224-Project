@@ -1,0 +1,161 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/OsbWood.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.04726003207120632 -0.9835612716793415 0.17428056179948875 5.745203275466595
+  position -1.901610836843139 -0.038891336485392634 1.311295599175862
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+PointLight {
+  attenuation 0 0 1
+  location 0 0.3 0
+}
+DEF Slope Solid {
+  translation 0 0 0.15
+  rotation 0 -1 0 0.4
+  children [
+    Shape {
+      appearance OsbWood {
+        textureTransform TextureTransform {
+          scale 0.5 2
+        }
+      }
+      geometry DEF BOX Box {
+        size 0.8 0.2 0.02
+      }
+    }
+  ]
+  name "Green box"
+  boundingObject USE BOX
+}
+Robot {
+  translation -0.10308244251403599 1.7094146677287628e-05 0.11685457330571342
+  rotation -0.18464268805535677 -2.8730352693894477e-06 0.9828057171890271 3.1415505672586965
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3.466449388373015e-07
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        PositionSensor {
+          name "Right Wheel sensor"
+        }
+        RotationalMotor {
+          name "Right  wheel motor"
+          consumptionFactor 70
+        }
+      ]
+      endPoint Solid {
+        translation -2.5499839499517593e-07 -0.04499999999593775 0.024999928779408064
+        rotation -0.6929920015549587 0.6929920015546257 -0.1988068700074662 2.7491002410393897
+        children [
+          DEF Wheel Pose {
+            rotation 0.577656895078166 0.5771968951617173 -0.5771968951617173 -2.09394
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 0 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "Right Wheel"
+        boundingObject USE Wheel
+        physics DEF Wheel_Physics Physics {
+        }
+        linearVelocity -0.0001012892740245778 3.5549059064765856e-09 -4.282316277723448e-05
+        angularVelocity -7.002425153723033e-07 -0.0039871574182512165 1.291989067054652e-06
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3.404169838039116e-07
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        PositionSensor {
+          name "Left Wheel sensor"
+        }
+        RotationalMotor {
+          name "Left wheel motor"
+          consumptionFactor 70
+        }
+      ]
+      endPoint Solid {
+        translation -2.54437395715049e-07 0.045000000004072435 0.024999928779403997
+        rotation -0.6929920000347857 0.6929920021886417 -0.19880687309639358 2.749100253861767
+        children [
+          DEF Wheel Pose {
+            rotation 0.577656895078166 0.5771968951617173 -0.5771968951617173 -2.09394
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.666667 0 1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "Left Wheel"
+        boundingObject USE Wheel
+        physics DEF Wheel_Physics Physics {
+        }
+        linearVelocity -0.000101140437444951 3.5180496554498953e-09 -4.2762868360391434e-05
+        angularVelocity -6.999535029928576e-07 -0.003979959154109411 1.2933079643099912e-06
+      }
+    }
+    Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF RoboBody Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    Altimeter {
+    }
+  ]
+  name "RampRobo"
+  contactMaterial "Body"
+  boundingObject Pose {
+  }
+  physics Physics {
+  }
+  linearVelocity -8.424227258464713e-06 -1.04799874563183e-09 -6.663344616209527e-06
+  angularVelocity -6.998691177021865e-07 -0.003983064925279891 1.2921600707044668e-06
+}
